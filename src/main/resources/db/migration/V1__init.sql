@@ -66,9 +66,11 @@ CREATE TABLE targets
     target_current  NUMERIC(10, 2),
     cyclotron_id    UUID         NOT NULL,
     radioisotope_id UUID         NOT NULL,
+    exit_port_id UUID         NOT NULL,
 
     CONSTRAINT fk_target_cyclotron FOREIGN KEY (cyclotron_id) REFERENCES cyclotrons (id),
-    CONSTRAINT fk_target_radioisotope FOREIGN KEY (radioisotope_id) REFERENCES radioisotopes (id)
+    CONSTRAINT fk_target_radioisotope FOREIGN KEY (radioisotope_id) REFERENCES radioisotopes (id),
+    CONSTRAINT fk_target_exit_port FOREIGN KEY (exit_port_id) REFERENCES exit_ports (id)
 );
 
 CREATE TABLE hot_labs

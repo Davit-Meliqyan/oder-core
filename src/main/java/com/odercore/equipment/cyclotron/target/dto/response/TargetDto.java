@@ -23,5 +23,6 @@ public class TargetDto extends BaseDto {
 
     private UUID cyclotronId;
     private UUID radioisotopeId;
+    private String radioisotopeName;
 
 }

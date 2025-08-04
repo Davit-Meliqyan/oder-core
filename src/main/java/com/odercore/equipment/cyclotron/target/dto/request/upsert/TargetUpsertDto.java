@@ -20,7 +20,7 @@ public class TargetUpsertDto {
     private BigDecimal targetPressure;
     private BigDecimal targetCurrent;
 
-    private UUID cyclotronId;
+    private UUID exitPortId;
     private UUID radioisotopeId;
 
 }

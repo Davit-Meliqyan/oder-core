@@ -16,6 +16,7 @@ public abstract class TargetMapper extends AbstractMapper<
     @Override
     @Mapping(source = "cyclotron.id", target = "cyclotronId")
     @Mapping(source = "radioisotope.id", target = "radioisotopeId")
+    @Mapping(source = "radioisotope.name", target = "radioisotopeName")
     public abstract TargetDto toDto(Target entity);
 
     @Override

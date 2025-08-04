@@ -2,6 +2,7 @@ package com.odercore.equipment.cyclotron.target.entity;
 
 import com.odercore.common.entity.BaseEntity;
 import com.odercore.equipment.cyclotron.entity.Cyclotron;
+import com.odercore.equipment.cyclotron.exitport.entity.ExitPort;
 import com.odercore.equipment.cyclotron.target.enums.TargetType;
 import com.odercore.radionuclide.radioisotope.entity.Radioisotope;
 import jakarta.persistence.*;
@@ -38,4 +39,8 @@ public class Target extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "radioisotope_id", nullable = false)
     private Radioisotope radioisotope;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "exit_port_id", nullable = false)
+    private ExitPort exitPort;
 }
