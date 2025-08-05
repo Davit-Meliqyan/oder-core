@@ -6,6 +6,7 @@ import com.odercore.common.service.AbstractCrudService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 public abstract class AbstractCrudController<
@@ -24,6 +25,11 @@ public abstract class AbstractCrudController<
     @GetMapping("/{id}")
     public ResponseEntity<DTO> getById(@PathVariable UUID id) {
         return ResponseEntity.ok(service.getById(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<DTO>> getAll() {
+        return ResponseEntity.ok(service.getAll());
     }
 
     @PostMapping

@@ -5,7 +5,9 @@ import com.odercore.common.entity.BaseEntity;
 import com.odercore.common.mapper.AbstractMapper;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public abstract class AbstractCrudService<
         ENTITY extends BaseEntity,
@@ -25,6 +27,12 @@ public abstract class AbstractCrudService<
 
     public DTO getById(UUID id) {
         return mapper.toDto(findEntityOrThrow(id));
+    }
+
+    public List<DTO> getAll() {
+        return findAll().stream()
+                .map(mapper::toDto)
+                .collect(Collectors.toList());
     }
 
     public DTO getById(UUID parentId, UUID id) {
@@ -69,6 +77,10 @@ public abstract class AbstractCrudService<
     public ENTITY findEntityOrThrow(UUID id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Entity not found: " + id));
+    }
+
+    public List<ENTITY> findAll() {
+        return repository.findAll();
     }
 
     public boolean existsById(UUID id) {
