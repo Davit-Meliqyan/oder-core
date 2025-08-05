@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @EqualsAndHashCode(callSuper = true)
 public class CyclotronDto extends EquipmentDto {
 

@@ -2,7 +2,10 @@ package com.odercore.subsystem.gassystem.dto.response;
 
 import com.odercore.common.dto.BaseDto;
 import com.odercore.equipment.enums.EquipmentType;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -10,7 +13,6 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @EqualsAndHashCode(callSuper = true)
 public class GasSystemDto extends BaseDto {
 

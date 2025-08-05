@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @EqualsAndHashCode(callSuper = true)
 public class RadioisotopeDto extends BaseDto {
     private String name;
