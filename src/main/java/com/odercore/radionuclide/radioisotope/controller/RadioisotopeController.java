@@ -32,9 +32,4 @@ public class RadioisotopeController extends AbstractCrudController<
         super(service);
     }
 
-    @GetMapping("/test/")
-    public ResponseEntity<String> getExitPortsByCyclotronId() {
-        return ResponseEntity.ok("test"
-        );
-    }
 }
