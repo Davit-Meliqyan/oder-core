@@ -25,7 +25,7 @@ services:
     container_name: postgres-db
     restart: always
     environment:
-      POSTGRES_DB: nucmatics
+      POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
     ports:
