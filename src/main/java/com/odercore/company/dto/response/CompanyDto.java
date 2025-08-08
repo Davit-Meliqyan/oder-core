@@ -17,4 +17,5 @@ public class CompanyDto extends BaseDto {
     private String phoneNumber;
     private String email;
     private String website;
+    private String logoURL;
 }
