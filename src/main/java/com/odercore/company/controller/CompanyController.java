@@ -49,9 +49,9 @@ public class CompanyController {
         }
     }
 
-    @DeleteMapping("/remove ")
-    public ResponseEntity<String> remove () {
-        companyService.remove ();
+    @DeleteMapping("/remove")
+    public ResponseEntity<String> remove() {
+        companyService.remove();
         return ResponseEntity.noContent().build();
     }
 
