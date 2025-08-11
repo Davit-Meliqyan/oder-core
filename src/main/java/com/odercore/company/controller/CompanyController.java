@@ -3,6 +3,8 @@ package com.odercore.company.controller;
 import com.odercore.company.dto.request.CompanyCreateDto;
 import com.odercore.company.dto.request.CompanyUpdateDto;
 import com.odercore.company.dto.response.CompanyDto;
+import com.odercore.company.dto.response.CompanyLicenseDto;
+import com.odercore.company.service.CompanyLicenseService;
 import com.odercore.company.service.CompanyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -20,9 +23,13 @@ import java.util.UUID;
 public class CompanyController {
 
     private final CompanyService companyService;
+    private final CompanyLicenseService licenseService;
 
-    public CompanyController(CompanyService companyService) {
+    public CompanyController(
+            CompanyService companyService,
+            CompanyLicenseService licenseService) {
         this.companyService = companyService;
+        this.licenseService = licenseService;
     }
 
     @GetMapping
@@ -70,5 +77,11 @@ public class CompanyController {
         companyService.deleteLogo();
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping
+    public ResponseEntity<List<CompanyLicenseDto>> getAll() {
+        return ResponseEntity.ok(licenseService.getAll());
+    }
+
 }
 

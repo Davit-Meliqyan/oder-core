@@ -8,6 +8,8 @@ import com.odercore.equipment.cyclotron.dto.response.CyclotronDto;
 import com.odercore.equipment.cyclotron.entity.Cyclotron;
 import com.odercore.equipment.cyclotron.exitport.dto.ExitPortDto;
 import com.odercore.equipment.cyclotron.exitport.service.ExitPortService;
+//import com.odercore.equipment.cyclotron.subsystem.dto.SubsystemParameterDto;
+//import com.odercore.equipment.cyclotron.subsystem.service.SubsystemParameterService;
 import com.odercore.equipment.cyclotron.target.dto.request.upsert.TargetUpsertDto;
 import com.odercore.equipment.cyclotron.target.dto.response.TargetDto;
 import com.odercore.equipment.cyclotron.target.service.TargetService;
@@ -30,12 +32,16 @@ public class CyclotronController extends AbstractCrudController<
 
     private final ExitPortService exitPortService;
     private final TargetService targetService;
+//    private final SubsystemParameterService parameterService;
 
     protected CyclotronController(
-            AbstractCrudService<Cyclotron, CyclotronDto, CyclotronUpsertDto, CyclotronPatchDto> service, ExitPortService exitPortService, TargetService targetService) {
+            AbstractCrudService<Cyclotron, CyclotronDto, CyclotronUpsertDto, CyclotronPatchDto> service, ExitPortService exitPortService, TargetService targetService
+         //   , SubsystemParameterService parameterService
+    ) {
         super(service);
         this.exitPortService = exitPortService;
         this.targetService = targetService;
+ //       this.parameterService = parameterService;
     }
 
     @GetMapping("/{id}/exit-ports")
@@ -70,5 +76,10 @@ public class CyclotronController extends AbstractCrudController<
         targetService.delete(id, targetId);
         return ResponseEntity.noContent().build();
     }
+
+//    @GetMapping("/{id}/parameters")
+//    public ResponseEntity<List<SubsystemParameterDto>> getSubsystemParameters(@PathVariable UUID id) {
+//        return ResponseEntity.ok(parameterService.getAllParametersByCyclotronId(id));
+//    }
 
 }
