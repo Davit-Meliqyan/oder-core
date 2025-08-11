@@ -49,6 +49,12 @@ public class CompanyController {
         }
     }
 
+    @DeleteMapping("/remove ")
+    public ResponseEntity<String> remove () {
+        companyService.remove ();
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping(value = "/logo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(summary = "Upload company logo")
     public ResponseEntity<String> uploadLogo(

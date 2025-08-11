@@ -61,6 +61,12 @@ public class CompanyService {
                 }).orElseThrow(() -> new RuntimeException("Company not found"));
     }
 
+    public void remove() {
+        Company company = findCompany()
+                .orElseThrow(() -> new RuntimeException("Company not found"));
+        repository.delete(company);
+    }
+
     public void uploadLogo(MultipartFile file) throws Exception {
         Company company = findCompany()
                 .orElseThrow(() -> new RuntimeException("Company not found"));
