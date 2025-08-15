@@ -1,7 +1,6 @@
 package com.odercore.company.entity;
 
 import com.odercore.common.entity.BaseEntity;
-import com.odercore.company.enums.DurationUnit;
 import com.odercore.company.enums.ExpiryReminder;
 import jakarta.persistence.*;
 import lombok.*;
@@ -37,13 +36,6 @@ public class CompanyLicense extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "expiry_reminder")
     private ExpiryReminder expiryReminder;
-
-    @Column(name = "training_duration_value")
-    private Integer trainingDurationValue;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "training_duration_unit")
-    private DurationUnit trainingDurationUnit;
 
     @ElementCollection
     @CollectionTable(name = "company_license_files", joinColumns = @JoinColumn(name = "license_id"))

@@ -62,8 +62,6 @@ public class CompanyLicenseService {
                     license.setDate(updateDto.getDate());
                     license.setDateOfExpiry(updateDto.getDateOfExpiry());
                     license.setExpiryReminder(updateDto.getExpiryReminder());
-                    license.setTrainingDurationValue(updateDto.getTrainingDurationValue());
-                    license.setTrainingDurationUnit(updateDto.getTrainingDurationUnit());
                     return licenseMapper.toDto(licenseRepository.save(license));
                 })
                 .orElseThrow(() -> new RuntimeException("License not found"));

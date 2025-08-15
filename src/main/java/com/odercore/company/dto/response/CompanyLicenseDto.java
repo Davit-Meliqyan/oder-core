@@ -1,7 +1,6 @@
 package com.odercore.company.dto.response;
 
 import com.odercore.common.dto.BaseDto;
-import com.odercore.company.enums.DurationUnit;
 import com.odercore.company.enums.ExpiryReminder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,8 +21,6 @@ public class CompanyLicenseDto extends BaseDto {
     private LocalDateTime date;
     private LocalDateTime dateOfExpiry;
     private ExpiryReminder expiryReminder;
-    private Integer trainingDurationValue;
-    private DurationUnit trainingDurationUnit;
     private Boolean active;
     private List<String> fileURLs;
 }
