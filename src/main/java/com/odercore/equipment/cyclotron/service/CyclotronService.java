@@ -31,7 +31,7 @@ public class CyclotronService extends AbstractCrudService<
     }
 
     @Override
-    protected void afterSaving(Cyclotron cyclotron) {
+    protected void afterSaving(CyclotronUpsertDto createDto, Cyclotron cyclotron) {
         createExitPorts(cyclotron);
     }
 

@@ -37,10 +37,10 @@ public abstract class AbstractCrudController<
         return ResponseEntity.ok(service.create(dto));
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<DTO> update(@PathVariable UUID id, @RequestBody UPSERT dto) {
-//        return ResponseEntity.ok(service.update(id, dto));
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<DTO> update(@PathVariable UUID id, @RequestBody UPSERT dto) {
+        return ResponseEntity.ok(service.update(id, dto));
+    }
 //
 //    @PatchMapping("/{id}")
 //    public ResponseEntity<DTO> patch(@PathVariable UUID id, @RequestBody P dto) {
