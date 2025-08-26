@@ -1,4 +1,4 @@
-package com.odercore.administration.company.enums;
+package com.odercore.common.enums;
 
 public enum ExpiryReminder {
     ONE_MONTH,

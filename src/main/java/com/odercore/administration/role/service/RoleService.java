@@ -37,4 +37,26 @@ public class RoleService extends AbstractCrudService<
         super.delete(id);
     }
 
+    @Override
+    protected void mapUpdateToEntity(RoleUpsertDto updateDto, Role entity) {
+        if (updateDto.getName() != null) {
+            entity.setName(updateDto.getName());
+        }
+
+        entity.setViewUsers(updateDto.isViewUsers());
+        entity.setEditUsers(updateDto.isEditUsers());
+        entity.setCreateUsers(updateDto.isCreateUsers());
+        entity.setDeleteUsers(updateDto.isDeleteUsers());
+
+        entity.setViewRoles(updateDto.isViewRoles());
+        entity.setEditRoles(updateDto.isEditRoles());
+        entity.setCreateRoles(updateDto.isCreateRoles());
+        entity.setDeleteRoles(updateDto.isDeleteRoles());
+
+        entity.setViewCompany(updateDto.isViewCompany());
+        entity.setEditCompany(updateDto.isEditCompany());
+        entity.setCreateCompany(updateDto.isCreateCompany());
+        entity.setDeleteCompany(updateDto.isDeleteCompany());
+    }
+
 }

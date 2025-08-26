@@ -10,6 +10,7 @@ import com.odercore.common.mapper.AbstractMapper;
 import com.odercore.common.service.AbstractCrudService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -22,12 +23,15 @@ public class MemberService extends AbstractCrudService<
         > {
 
     private final MemberRoleRepository memberRoleRepository;
+    private final MemberLicenseService licenseService;
 
     protected MemberService(JpaRepository<Member, UUID> repository,
                             AbstractMapper<Member, MemberDto, MemberUpsertDto> mapper,
-                            MemberRoleRepository memberRoleRepository) {
+                            MemberRoleRepository memberRoleRepository,
+                            MemberLicenseService licenseService) {
         super(repository, mapper);
         this.memberRoleRepository = memberRoleRepository;
+        this.licenseService = licenseService;
     }
 
 
@@ -54,6 +58,13 @@ public class MemberService extends AbstractCrudService<
         entity.setPhone(updateDto.getPhone());
         entity.setEmail(updateDto.getEmail());
         entity.setPosition(updateDto.getPosition());
+    }
+
+    @Override
+    @Transactional
+    public void delete(UUID id) {
+        licenseService.delete(id);
+        super.delete(id);
     }
 
 }

@@ -1,5 +1,7 @@
-package com.odercore.administration.company.dto.request;
+package com.odercore.administration.member.dto.request.upsert;
 
+
+import com.odercore.common.enums.DurationUnit;
 import com.odercore.common.enums.ExpiryReminder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,11 +14,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CompanyLicenseCreateDto {
+public class MemberLicenseCreateDto {
     private String name;
     private String description;
     private String organizationIssued;
     private LocalDateTime date;
     private LocalDateTime dateOfExpiry;
     private ExpiryReminder expiryReminder;
+    private Integer trainingDurationValue;
+    private DurationUnit trainingDurationUnit;
 }
