@@ -6,6 +6,7 @@ import com.odercore.administration.company.entity.CompanyLicense;
 import com.odercore.administration.company.mapper.CompanyLicenseMapper;
 import com.odercore.administration.company.repository.CompanyLicenseRepository;
 import com.odercore.common.utils.FileUtils;
+import com.odercore.license.LicenseProcessor;
 import com.odercore.minio.MinioService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,14 +23,20 @@ public class CompanyLicenseService {
     private final CompanyLicenseRepository licenseRepository;
     private final CompanyLicenseMapper licenseMapper;
     private final MinioService minioService;
+    private final LicenseProcessor licenseProcessor;
 
     @Value("${minio.bucket}")
     private String bucket;
 
-    public CompanyLicenseService(CompanyLicenseRepository licenseRepository, CompanyLicenseMapper licenseMapper, MinioService minioService) {
+    public CompanyLicenseService(
+            CompanyLicenseRepository licenseRepository,
+            CompanyLicenseMapper licenseMapper,
+            MinioService minioService,
+            LicenseProcessor licenseProcessor) {
         this.licenseRepository = licenseRepository;
         this.licenseMapper = licenseMapper;
         this.minioService = minioService;
+        this.licenseProcessor = licenseProcessor;
     }
 
     public List<CompanyLicenseDto> getAll() {
@@ -101,6 +108,12 @@ public class CompanyLicenseService {
     private CompanyLicense getLicenseOrThrow(UUID licenseId) {
         return licenseRepository.findById(licenseId)
                 .orElseThrow(() -> new RuntimeException("License not found"));
+    }
+
+    public void dailyCheck() {
+        List<CompanyLicense> companyLicenses = licenseRepository.findAll();
+        licenseProcessor.processLicenses(companyLicenses);
+        licenseRepository.saveAll(companyLicenses);
     }
 
 }

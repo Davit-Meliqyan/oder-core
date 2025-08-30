@@ -4,6 +4,7 @@ import com.odercore.common.entity.BaseEntity;
 import com.odercore.common.enums.DurationUnit;
 import com.odercore.common.enums.ExpiryReminder;
 import com.odercore.common.utils.HasFileURLs;
+import com.odercore.license.LicenseLike;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,7 +20,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MemberLicense extends BaseEntity implements HasFileURLs {
+public class MemberLicense extends BaseEntity implements HasFileURLs, LicenseLike {
 
     @Column(name = "member_id", nullable = false)
     private UUID memberId;

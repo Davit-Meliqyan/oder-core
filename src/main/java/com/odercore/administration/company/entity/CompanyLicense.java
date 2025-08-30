@@ -3,6 +3,7 @@ package com.odercore.administration.company.entity;
 import com.odercore.common.entity.BaseEntity;
 import com.odercore.common.enums.ExpiryReminder;
 import com.odercore.common.utils.HasFileURLs;
+import com.odercore.license.LicenseLike;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CompanyLicense extends BaseEntity implements HasFileURLs {
+public class CompanyLicense extends BaseEntity implements HasFileURLs, LicenseLike {
 
     @Column(name = "name", nullable = false)
     private String name;
