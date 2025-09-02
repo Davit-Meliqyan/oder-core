@@ -8,6 +8,7 @@ import com.odercore.equipment.cyclotron.dto.response.CyclotronDto;
 import com.odercore.equipment.cyclotron.entity.Cyclotron;
 import com.odercore.equipment.cyclotron.exitport.entity.ExitPort;
 import com.odercore.equipment.cyclotron.exitport.service.ExitPortService;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +43,13 @@ public class CyclotronService extends AbstractCrudService<
                         .cyclotron(cyclotron)
                         .build())
                 .forEach(exitPortService::save);
+    }
+
+    @Override
+    @Transactional
+    public void delete(UUID id) {
+        exitPortService.deleteByCyclotronId(id);
+        super.delete(id);
     }
 
 }

@@ -27,4 +27,8 @@ public class ExitPortService {
         repository.save(entity);
     }
 
+    public void deleteByCyclotronId(UUID cyclotronId) {
+        repository.deleteByCyclotronId(cyclotronId);
+    }
+
 }

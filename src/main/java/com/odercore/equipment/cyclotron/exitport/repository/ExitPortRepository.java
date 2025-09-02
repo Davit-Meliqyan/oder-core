@@ -12,4 +12,6 @@ public interface ExitPortRepository extends JpaRepository<ExitPort, UUID> {
 
     List<ExitPort> findByCyclotronId(UUID cyclotronId);
 
+    void deleteByCyclotronId(UUID cyclotronId);
+
 }
