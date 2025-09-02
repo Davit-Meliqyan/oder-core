@@ -12,12 +12,9 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(callSuper = true)
 public class CyclotronUpsertDto extends EquipmentUpsertDto {
 
+    private String name;
     private BigDecimal beamEnergy;
     private Integer sourcesCount;
     private Integer exitPortsCount;
-
-    private Boolean hasWaterCooling;
-    private Boolean hasHeliumCooling;
-    private Boolean hasAirCompressor;
 
 }

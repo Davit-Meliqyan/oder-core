@@ -17,6 +17,9 @@ import java.math.BigDecimal;
 @Builder
 public class Cyclotron extends Equipment {
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "beam_energy")
     private BigDecimal beamEnergy;
 
@@ -25,14 +28,5 @@ public class Cyclotron extends Equipment {
 
     @Column(name = "exit_ports_count")
     private Integer exitPortsCount;
-
-    @Column(name = "has_water_cooling")
-    private Boolean hasWaterCooling;
-
-    @Column(name = "has_helium_cooling")
-    private Boolean hasHeliumCooling;
-
-    @Column(name = "has_air_compressor")
-    private Boolean hasAirCompressor;
 
 }
