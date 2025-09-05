@@ -25,8 +25,10 @@ public class CyclotronService extends AbstractCrudService<
 
     private final ExitPortService exitPortService;
 
-    protected CyclotronService(JpaRepository<Cyclotron, UUID> repository,
-                               AbstractMapper<Cyclotron, CyclotronDto, CyclotronUpsertDto> mapper, ExitPortService exitPortService) {
+    protected CyclotronService(
+            JpaRepository<Cyclotron, UUID> repository,
+            AbstractMapper<Cyclotron, CyclotronDto, CyclotronUpsertDto> mapper,
+            ExitPortService exitPortService) {
         super(repository, mapper);
         this.exitPortService = exitPortService;
     }
@@ -34,6 +36,17 @@ public class CyclotronService extends AbstractCrudService<
     @Override
     protected void afterSaving(CyclotronUpsertDto createDto, Cyclotron cyclotron) {
         createExitPorts(cyclotron);
+    }
+
+    protected void mapUpdateToEntity(CyclotronUpsertDto updateDto, Cyclotron entity) {
+        entity.setName(updateDto.getName());
+        entity.setBrand(updateDto.getBrand());
+        entity.setModel(updateDto.getModel());
+        entity.setSerialNumber(updateDto.getSerialNumber());
+        entity.setBeamEnergy(updateDto.getBeamEnergy());
+        entity.setBeamEnergy(updateDto.getBeamEnergy());
+        entity.setSourcesCount(updateDto.getSourcesCount());
+        entity.setExitPortsCount(updateDto.getExitPortsCount());
     }
 
     private void createExitPorts(Cyclotron cyclotron) {
